@@ -20,6 +20,10 @@ Download the executable file to play the game: [Download Snake Game](https://dri
 - Added game modes (easy, normal, hard)
 - The application now returns to the menu after losing a game instead of exiting
 
+#### VERSION 0.4
+- bugs fixes (now every new game snake will apear in random place)
+- showing game version below the game logo
+
 ### Future Updates
 
 Stay tuned for future updates! We plan to add:
@@ -53,6 +57,10 @@ Pobierz plik wykonywalny, aby zagrać w grę: [Pobierz grę Snake](https://drive
 - Dodano menu
 - Dodano tryby gry (łatwy, normalny, trudny)
 - Aplikacja teraz wraca do menu po przegranej grze zamiast się zamykać
+
+#### VERSION 0.4
+- Naprawiono błędy (wąż będzie się teraz pojawiał za każdym razem w losowym miejscu po rozpoczęciu gry)
+- wersja gra teraz pokazuje się pod logiem gry
 
 ## Przyszłe Aktualizacje
 
