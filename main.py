@@ -1,20 +1,22 @@
 import customtkinter as ctk
 import tkinter as tk
-from constants import *
 import variables
+import os
+import constants 
+from random import randint
 from random import choice
 from sys import exit
-import os
+
 
 class Game(ctk.CTk):
     def __init__(self):
         try:
             super().__init__()
             self.title('Snake')
-            self.geometry(f'{WINDOW_SIZE[0]}x{WINDOW_SIZE[1]}')
+            self.geometry(f'{constants.WINDOW_SIZE[0]}x{constants.WINDOW_SIZE[1]}')
             self.resizable(False, False)
             
-            self.canvas = ctk.CTkCanvas(self, width=GRID_SIZE * FIELDS[0], height=GRID_SIZE * FIELDS[1], bg=BACKGROUND_COLOR, highlightbackground='black')
+            self.canvas = ctk.CTkCanvas(self, width=constants.GRID_SIZE * constants.FIELDS[0], height=constants.GRID_SIZE * constants.FIELDS[1], bg=constants.BACKGROUND_COLOR, highlightbackground='black')
             self.canvas.pack()
             
             if os.path.exists('assets/icon/icon.ico'):
@@ -43,7 +45,7 @@ class Game(ctk.CTk):
         self.GameLogo = ctk.CTkLabel(self.canvas, text='SNAKE', font=ctk.CTkFont(family='Modern', size=106, weight='bold'))
         self.GameLogo.place(relx=0.5, rely=0.25, anchor='center')
         
-        self.option_canvas = ctk.CTkCanvas(self.canvas, bg=BACKGROUND_COLOR)
+        self.option_canvas = ctk.CTkCanvas(self.canvas, bg=constants.BACKGROUND_COLOR)
         
         self.selected_option = tk.StringVar()  # Tworzenie zmiennej dla radiobuttonów
         
@@ -63,6 +65,9 @@ class Game(ctk.CTk):
 
         self.press_space_to_continue = ctk.CTkLabel(self.canvas, text='PRESS "SPACE" TO START THE GAME', font=ctk.CTkFont(family='Modern', size=26, weight='bold'))
         self.press_space_to_continue.place(relx=0.5, rely=0.85, anchor='center')
+        
+        self.version_text = ctk.CTkLabel(self.canvas, text=constants.VERSION, font=ctk.CTkFont(family='Modern', size=12, weight='bold'))
+        self.version_text.place(relx=0.78, rely=0.41, anchor='se')
 
     def radio_button_game_mode(self):
         selected_mode = self.selected_option.get()
@@ -83,12 +88,13 @@ class Game(ctk.CTk):
             self.GameLogo.place_forget()
             self.press_space_to_continue.place_forget()
             self.option_canvas.place_forget()
+            self.version_text.place_forget()
         except AttributeError:
             pass
         
         # snake
-        self.snake = [START_POS, (START_POS[0] - 1, START_POS[1]), (START_POS[0] - 2, START_POS[1])]
-        self.direction = DIRECTIONS['right']
+        self.snake = [constants.START_POS, (constants.START_POS[0] - 1, constants.START_POS[1]), (constants.START_POS[0] - 2, constants.START_POS[1])]
+        self.direction = constants.DIRECTIONS['right']
         
         # apple
         self.apple_position = ()
@@ -122,7 +128,7 @@ class Game(ctk.CTk):
             exit()
     
     def place_apple(self):
-        possible_positions = [(x, y) for x in range(FIELDS[0]) for y in range(FIELDS[1])]
+        possible_positions = [(x, y) for x in range(constants.FIELDS[0]) for y in range(constants.FIELDS[1])]
         for part in self.snake:
             if part in possible_positions:
                 possible_positions.remove(part)
@@ -131,7 +137,7 @@ class Game(ctk.CTk):
     def check_game_over(self):
         if self.snake:
             snake_head = self.snake[0]
-            if (snake_head[0] >= FIELDS[0] or snake_head[1] >= FIELDS[1] or
+            if (snake_head[0] >= constants.FIELDS[0] or snake_head[1] >= constants.FIELDS[1] or
                 snake_head[0] < 0 or snake_head[1] < 0 or
                 snake_head in self.snake[1:]):
                 print("Game Over")
@@ -149,31 +155,32 @@ class Game(ctk.CTk):
                 print("Pressed Space")
                 variables.menu = False
                 self.menu = False
+                constants.START_POS = (randint(3, constants.FIELDS[0] - 3), randint(3, constants.FIELDS[1] - 3))
                 self.start_game()
         else:
-            if event.keycode == 37 and self.direction != DIRECTIONS['right']:  # left arrow
-                self.direction = DIRECTIONS['left']
+            if event.keycode == 37 and self.direction != constants.DIRECTIONS['right']:  # left arrow
+                self.direction = constants.DIRECTIONS['left']
                 return
-            elif event.keycode == 65 and self.direction != DIRECTIONS['right']:  # a
-                self.direction = DIRECTIONS['left']
+            elif event.keycode == 65 and self.direction != constants.DIRECTIONS['right']:  # a
+                self.direction = constants.DIRECTIONS['left']
                 return
-            elif event.keycode == 38 and self.direction != DIRECTIONS['down']:  # up arrow
-                self.direction = DIRECTIONS['up']
+            elif event.keycode == 38 and self.direction != constants.DIRECTIONS['down']:  # up arrow
+                self.direction = constants.DIRECTIONS['up']
                 return
-            elif event.keycode == 87 and self.direction != DIRECTIONS['down']:  # w
-                self.direction = DIRECTIONS['up']
+            elif event.keycode == 87 and self.direction != constants.DIRECTIONS['down']:  # w
+                self.direction = constants.DIRECTIONS['up']
                 return
-            elif event.keycode == 39 and self.direction != DIRECTIONS['left']:  # right arrow
-                self.direction = DIRECTIONS['right']
+            elif event.keycode == 39 and self.direction != constants.DIRECTIONS['left']:  # right arrow
+                self.direction = constants.DIRECTIONS['right']
                 return
-            elif event.keycode == 68 and self.direction != DIRECTIONS['left']:  # d
-                self.direction = DIRECTIONS['right']
+            elif event.keycode == 68 and self.direction != constants.DIRECTIONS['left']:  # d
+                self.direction = constants.DIRECTIONS['right']
                 return
-            elif event.keycode == 40 and self.direction != DIRECTIONS['up']:  # down arrow
-                self.direction = DIRECTIONS['down']
+            elif event.keycode == 40 and self.direction != constants.DIRECTIONS['up']:  # down arrow
+                self.direction = constants.DIRECTIONS['down']
                 return
-            elif event.keycode == 83 and self.direction != DIRECTIONS['up']:  # s
-                self.direction = DIRECTIONS['down']
+            elif event.keycode == 83 and self.direction != constants.DIRECTIONS['up']:  # s
+                self.direction = constants.DIRECTIONS['down']
                 return
     
     def draw(self):
@@ -181,16 +188,16 @@ class Game(ctk.CTk):
         
         # draw apple if it exists
         if self.apple_position:
-            x1, y1 = self.apple_position[0] * GRID_SIZE, self.apple_position[1] * GRID_SIZE
-            x2, y2 = x1 + GRID_SIZE, y1 + GRID_SIZE
-            self.canvas.create_rectangle(x1, y1, x2, y2, fill=APPLE_COLOR, outline='')
+            x1, y1 = self.apple_position[0] * constants.GRID_SIZE, self.apple_position[1] * constants.GRID_SIZE
+            x2, y2 = x1 + constants.GRID_SIZE, y1 + constants.GRID_SIZE
+            self.canvas.create_rectangle(x1, y1, x2, y2, fill=constants.APPLE_COLOR, outline='')
         
         # draw snake if it exists
         if self.snake:
             for index, position in enumerate(self.snake):
-                x1, y1 = position[0] * GRID_SIZE, position[1] * GRID_SIZE
-                x2, y2 = x1 + GRID_SIZE, y1 + GRID_SIZE
-                color = SNAKE_BODY_COLOR if index != 0 else SNAKE_HEAD_COLOR
+                x1, y1 = position[0] * constants.GRID_SIZE, position[1] * constants.GRID_SIZE
+                x2, y2 = x1 + constants.GRID_SIZE, y1 + constants.GRID_SIZE
+                color = constants.SNAKE_BODY_COLOR if index != 0 else constants.SNAKE_HEAD_COLOR
                 self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline='')
 
 if __name__ == '__main__':

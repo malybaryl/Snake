@@ -8,3 +8,6 @@ VERSION 0.3:
 - menu
 - game modes (easy, normal, hard)
 - applications won't exit after lost game, but will go to menu.
+
+VERSION 0.4:
+- bugs fixes (now every new game snake will apear in random place)

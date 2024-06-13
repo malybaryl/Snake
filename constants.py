@@ -3,6 +3,7 @@ from random import randint
 # game variables
 GRID_SIZE = 32
 FIELDS = (20, 15)
+VERSION = '0.4'
 
 # window info
 WINDOW_SIZE = (GRID_SIZE * (FIELDS[0] - 4), GRID_SIZE * (FIELDS[1] - 3))
