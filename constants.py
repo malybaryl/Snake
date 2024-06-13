@@ -5,7 +5,7 @@ GRID_SIZE = 32
 FIELDS = (20, 15)
 
 # window info
-WINDOW_SIZE = (GRID_SIZE*FIELDS[0] + 2, GRID_SIZE*FIELDS[1] + 2)
+WINDOW_SIZE = (((GRID_SIZE - 6)*FIELDS[0]), ((GRID_SIZE - 6)*FIELDS[1]))
 
 # movement
 START_POS = (randint(3, FIELDS[0] - 3), randint(3, FIELDS[1 ] - 3))
