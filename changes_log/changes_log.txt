@@ -11,3 +11,4 @@ VERSION 0.3:
 
 VERSION 0.4:
 - bugs fixes (now every new game snake will apear in random place)
+- showing game version below the game logo
