@@ -6,7 +6,7 @@ FIELDS = (20, 15)
 VERSION = '0.4'
 
 # window info
-WINDOW_SIZE = (GRID_SIZE * (FIELDS[0] - 4), GRID_SIZE * (FIELDS[1] - 3))
+WINDOW_SIZE = (GRID_SIZE * FIELDS[0], GRID_SIZE * FIELDS[1])
 
 # movement
 START_POS = (randint(3, FIELDS[0] - 3), randint(3, FIELDS[1] - 3))

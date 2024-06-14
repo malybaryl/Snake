@@ -67,7 +67,7 @@ class Game(ctk.CTk):
         self.press_space_to_continue.place(relx=0.5, rely=0.85, anchor='center')
         
         self.version_text = ctk.CTkLabel(self.canvas, text=constants.VERSION, font=ctk.CTkFont(family='Modern', size=12, weight='bold'))
-        self.version_text.place(relx=0.78, rely=0.41, anchor='se')
+        self.version_text.place(relx=0.70, rely=0.41, anchor='se')
 
     def radio_button_game_mode(self):
         selected_mode = self.selected_option.get()
