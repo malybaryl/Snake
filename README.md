@@ -5,7 +5,7 @@ Welcome to the Snake Game! This classic game has been revamped with new features
 
 ### Download
 
-Download the executable file to play the game: [Download Snake Game](https://drive.google.com/drive/folders/1ib1tCTGJOraZ9XakchKF7QrFUYB-vVrB?usp=sharing)
+Download the executable file to play the game: [Download Snake Game](https://drive.google.com/drive/folders/1vZn0zCFkUq48Q8wcSZTOFf37SWBKKMMr?usp=sharing)
 
 ### Changelog
 
@@ -43,7 +43,7 @@ Witamy w grze Snake! Ta klasyczna gra została odświeżona z nowymi funkcjami i
 
 ## Pobierz
 
-Pobierz plik wykonywalny, aby zagrać w grę: [Pobierz grę Snake](https://drive.google.com/drive/folders/1ib1tCTGJOraZ9XakchKF7QrFUYB-vVrB?usp=sharing)
+Pobierz plik wykonywalny, aby zagrać w grę: [Pobierz grę Snake](https://drive.google.com/drive/folders/1vZn0zCFkUq48Q8wcSZTOFf37SWBKKMMr?usp=sharing)
 
 ## Zmiany
 
